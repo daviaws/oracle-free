@@ -57,11 +57,14 @@ docker run -it --rm -p 4000:4000 -e SECRET_KEY_BASE="KmsyXpjWSJXsF8yVCf7oehu3YXY
 # Publish docker
 docker tag hello_phoenix:latest daviaws/hello_phoenix:0.1.1
 docker push daviaws/hello_phoenix:0.1.1
-docker run -e SECRET_KEY_BASE="KmsyXpjWSJXsF8yVCf7oehu3YXYJSyi6NzEmdpIdl6OXu+PD7gLtjH0Oe0AnyXGN" -p 4000:4000 daviaws/hello_phoenix:0.1.0
+docker run -e SECRET_KEY_BASE="KmsyXpjWSJXsF8yVCf7oehu3YXYJSyi6NzEmdpIdl6OXu+PD7gLtjH0Oe0AnyXGN" -p 4000:4000 daviaws/hello_phoenix:0.1.1
 
 # Provide in VM
 sudo docker run -d \
   -e SECRET_KEY_BASE="KmsyXpjWSJXsF8yVCf7oehu3YXYJSyi6NzEmdpIdl6OXu+PD7gLtjH0Oe0AnyXGN" \
   -e PHX_HOST="$(curl -s https://ifconfig.me)" \
   -p 4000:4000 \
-  daviaws/hello_phoenix:0.1.0
+  daviaws/hello_phoenix:0.1.1
+
+# Now
+curl http://152.67.34.232:4000
