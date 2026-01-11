@@ -5,6 +5,11 @@ defmodule HelloPhoenixWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authorized_api do
+    plug :accepts, ["json"]
+    plug HelloPhoenixWeb.AuthorizationPlug
+  end
+
   scope "/", HelloPhoenixWeb do
     pipe_through :api
 
@@ -12,6 +17,12 @@ defmodule HelloPhoenixWeb.Router do
     get "/health", VersionController, :index
     get "/healthz", VersionController, :index
     get "/version", VersionController, :index
+  end
+
+  scope "/", HelloPhoenixWeb do
+    pipe_through :authorized_api
+
+    get "/cnpj/:cnpj", CnpjController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

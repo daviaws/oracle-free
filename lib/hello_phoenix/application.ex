@@ -7,6 +7,8 @@ defmodule HelloPhoenix.Application do
 
   @impl true
   def start(_type, _args) do
+    HelloPhoenix.OAuth.Store.open()
+
     children = [
       HelloPhoenixWeb.Telemetry,
       {DNSCluster, query: Application.get_env(:hello_phoenix, :dns_cluster_query) || :ignore},

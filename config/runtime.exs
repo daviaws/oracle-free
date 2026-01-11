@@ -102,3 +102,16 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end
+
+config :hello_phoenix, :nuvem_fiscal,
+  auth_url: "https://auth.nuvemfiscal.com.br/oauth/token",
+  api_url: System.fetch_env!("NUVEM_FISCAL_API_URL"),
+  client_id: System.fetch_env!("NUVEMFISCAL_CLIENT_ID"),
+  client_secret: System.fetch_env!("NUVEMFISCAL_CLIENT_SECRET"),
+  grant_type: "client_credentials",
+  scope: "conta empresa cep cnpj nfe nfce nfse mdfe cte cteos nfcom dce distribuicao-nfe debug"
+
+config :hello_phoenix, :oauth, base_path: System.fetch_env!("OAUTH_STORE_BASE_PATH")
+
+config :hello_phoenix, :api,
+  client_token: "3S7aUQYbxck/u2CEI9h6gmwXYtdRcPsyvLBQ32L8Br25fgvbZ1HFGpFmbe1ZdjgX"

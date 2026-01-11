@@ -25,3 +25,6 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 hello_phoenix-*.tar
 
+# Ignore runtime data
+data/*
+.env
