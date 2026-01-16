@@ -58,8 +58,8 @@ docker build -t hello_phoenix .
 docker run -it --rm -p 4000:4000 -e SECRET_KEY_BASE="KmsyXpjWSJXsF8yVCf7oehu3YXYJSyi6NzEmdpIdl6OXu+PD7gLtjH0Oe0AnyXGN" hello_phoenix
 
 # Publish docker
-docker tag hello_phoenix:latest daviaws/hello_phoenix:0.1.3
-docker push daviaws/hello_phoenix:0.1.3
+docker tag hello_phoenix:latest daviaws/hello_phoenix:0.1.4
+docker push daviaws/hello_phoenix:0.1.4
 
 # Test docker
 sudo docker run -d \
