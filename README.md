@@ -85,3 +85,7 @@ sudo docker run -d \
 
 # Now
 curl http://152.67.34.232
+
+# Tests
+eval $(cat .env) mix test test/hello_phoenix/groq/intent_test.ex
+eval $(cat .env) mix test test/hello_phoenix/groq/intent_test.ex --include llm
