@@ -17,6 +17,9 @@ defmodule HelloPhoenixWeb.Router do
     get "/health", VersionController, :index
     get "/healthz", VersionController, :index
     get "/version", VersionController, :index
+
+    get "/whatsapp", WhatsappController, :verify
+    post "/whatsapp", WhatsappController, :webhook
   end
 
   scope "/", HelloPhoenixWeb do
