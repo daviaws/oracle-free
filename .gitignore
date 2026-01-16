@@ -28,3 +28,6 @@ hello_phoenix-*.tar
 # Ignore runtime data
 data/*
 .env
+
+# Ignore project data
+work
