@@ -8,6 +8,7 @@
 import Config
 
 config :hello_phoenix,
+  ecto_repos: [HelloPhoenix.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configure the endpoint

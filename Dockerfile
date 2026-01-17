@@ -25,7 +25,7 @@ RUN mix release
 # ============================
 FROM elixir:1.19.4-otp-28-alpine AS runtime
 
-RUN apk add --no-cache openssl ncurses-libs libstdc++
+RUN apk add --no-cache openssl ncurses-libs libstdc++ sqlite-libs
 
 WORKDIR /app
 ENV HOME=/app
@@ -36,4 +36,4 @@ COPY --from=build /app/_build/prod/rel/* ./release
 
 EXPOSE 4000
 
-CMD ["./release/bin/hello_phoenix", "start"]
+CMD ["sh", "-c", "./release/bin/hello_phoenix eval 'HelloPhoenix.Release.migrate' && ./release/bin/hello_phoenix start"]

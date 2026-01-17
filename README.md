@@ -58,8 +58,8 @@ docker build -t hello_phoenix .
 docker run -it --rm -p 4000:4000 -e SECRET_KEY_BASE="KmsyXpjWSJXsF8yVCf7oehu3YXYJSyi6NzEmdpIdl6OXu+PD7gLtjH0Oe0AnyXGN" hello_phoenix
 
 # Publish docker
-docker tag hello_phoenix:latest daviaws/hello_phoenix:0.1.4
-docker push daviaws/hello_phoenix:0.1.4
+docker tag hello_phoenix:latest daviaws/hello_phoenix:0.1.5
+docker push daviaws/hello_phoenix:0.1.5
 
 # Test docker
 sudo docker run -d \
@@ -69,7 +69,8 @@ sudo docker run -d \
   --label traefik.http.routers.phx.entrypoints=web \
   --label 'traefik.http.routers.phx.rule=Host(`localhost`)' \
   --label traefik.http.services.phx.loadbalancer.server.port=4000 \
-daviaws/hello_phoenix:0.1.3
+  -v data:/app/data \
+daviaws/hello_phoenix:0.1.5
 
 # Provide in VM
 sudo docker run -d \
@@ -81,7 +82,7 @@ sudo docker run -d \
   --label "traefik.http.routers.phx.rule=Host(\`localhost\`) || Host(\`$(curl -s https://ifconfig.me)\`)" \
   --label traefik.http.services.phx.loadbalancer.server.port=4000 \
   -v /home/ubuntu/data:/app/data \
-  daviaws/hello_phoenix:0.1.3
+  daviaws/hello_phoenix:0.1.5
 
 # Now
 curl http://152.67.34.232

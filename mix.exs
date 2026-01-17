@@ -4,7 +4,7 @@ defmodule HelloPhoenix.MixProject do
   def project do
     [
       app: :hello_phoenix,
-      version: "0.1.4",
+      version: "0.1.5",
       elixir: "~> 1.19.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -48,7 +48,10 @@ defmodule HelloPhoenix.MixProject do
       {:gettext, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:ecto_sql, "~> 3.13.4"},
+      {:ecto_sqlite3, "~> 0.22"},
+      {:exqlite, "~> 0.34"}
     ]
   end
 
@@ -61,6 +64,8 @@ defmodule HelloPhoenix.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
     ]
   end

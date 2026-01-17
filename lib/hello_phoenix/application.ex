@@ -13,9 +13,7 @@ defmodule HelloPhoenix.Application do
       HelloPhoenixWeb.Telemetry,
       {DNSCluster, query: Application.get_env(:hello_phoenix, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: HelloPhoenix.PubSub},
-      # Start a worker by calling: HelloPhoenix.Worker.start_link(arg)
-      # {HelloPhoenix.Worker, arg},
-      # Start to serve requests, typically the last entry
+      HelloPhoenix.Repo,
       HelloPhoenixWeb.Endpoint
     ]
 
