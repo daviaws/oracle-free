@@ -116,7 +116,6 @@ config :hello_phoenix, :oauth, base_path: System.fetch_env!("OAUTH_STORE_BASE_PA
 config :hello_phoenix, :api,
   client_token: "3S7aUQYbxck/u2CEI9h6gmwXYtdRcPsyvLBQ32L8Br25fgvbZ1HFGpFmbe1ZdjgX"
 
-
 config :hello_phoenix, HelloPhoenix.Repo,
   database: Path.join(System.fetch_env!("SQLITE_BASE_PATH"), "sqlite.db"),
   pool_size: 10

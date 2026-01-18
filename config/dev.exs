@@ -43,7 +43,7 @@ config :hello_phoenix, HelloPhoenixWeb.Endpoint,
 config :hello_phoenix, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
-config :logger, :default_formatter, format: "[$level] $message\n"
+config :logger, :default_formatter, format: "[$level] $date $time $metadata$message\n"
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.

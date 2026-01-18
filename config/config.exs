@@ -23,9 +23,11 @@ config :hello_phoenix, HelloPhoenixWeb.Endpoint,
   live_view: [signing_salt: "nXpiCCQD"]
 
 config :hello_phoenix, Oban,
+  # log: :debug,
   engine: Oban.Engines.Lite,
   queues: [default: 1],
-  repo: HelloPhoenix.Repo
+  repo: HelloPhoenix.Repo,
+  poll_interval: :timer.seconds(5)
 
 # Configure the mailer
 #

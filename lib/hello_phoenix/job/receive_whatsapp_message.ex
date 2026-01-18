@@ -4,10 +4,19 @@ defmodule HelloPhoenix.Job.ReceiveWhatsappMessage do
     max_attempts: 3,
     unique: true
 
-  @impl Oban.Worker
-  def perform(%Oban.Job{args: args}) do
-    IO.puts("--- [Job.ReceiveWhatsappMessage] Received Message: #{inspect(args, pretty: true, limit: :infinity)} ---")
+  alias HelloPhoenix.Repo
+  alias HelloPhoenix.Whatsapp.Message
 
-    :ok
+  require Logger
+
+  @impl Oban.Worker
+  def perform(%Oban.Job{args: args, inserted_at: inserted_at}) do
+    Logger.info("[Job.ReceiveWhatsappMessage] Received Message ---")
+
+    Message.parse(args, inserted_at)
+    |> result()
   end
+
+  defp result({:ok, message}), do: Repo.insert(message)
+  defp result({:error, error}), do: {:discard, error}
 end
