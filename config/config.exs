@@ -22,6 +22,11 @@ config :hello_phoenix, HelloPhoenixWeb.Endpoint,
   pubsub_server: HelloPhoenix.PubSub,
   live_view: [signing_salt: "nXpiCCQD"]
 
+config :hello_phoenix, Oban,
+  engine: Oban.Engines.Lite,
+  queues: [default: 1],
+  repo: HelloPhoenix.Repo
+
 # Configure the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

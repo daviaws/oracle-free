@@ -4,6 +4,10 @@ defmodule HelloPhoenixWeb.WhatsappController do
   # O Token que você definirá no Painel da Meta
   @verify_token "ReiCientista2026"
 
+  alias HelloPhoenix.Job.ReceiveWhatsappMessage
+
+  require Logger
+
   # 1. Validação (GET) - O "aperto de mão" da Meta
   def verify(conn, %{
         "hub.mode" => "subscribe",
@@ -17,14 +21,12 @@ defmodule HelloPhoenixWeb.WhatsappController do
     end
   end
 
-  # 2. Recepção (POST) - Onde a mensagem cai
+  # 2. Recepção da mensagem (POST)
   def webhook(conn, params) do
-    # Aqui usamos a "petulância" do Elixir para tratar os dados
-    # Logando a mensagem para depuração instantânea
-    IO.inspect(params, label: "--- INTERFERÊNCIA WHATSAPP DETECTADA ---")
+    Logger.info("Received Whatsapp Message! Enqueuing job.")
 
-    # TODO: Integrar com sua Arquitetura Cognitiva (Gudwin/Unicamp)
-    # Ex: SeuProjeto.Cognition.process_message(params)
+    ReceiveWhatsappMessage.new(params)
+    |> Oban.insert!()
 
     json(conn, %{status: "ok"})
   end

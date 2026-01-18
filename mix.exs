@@ -4,7 +4,7 @@ defmodule HelloPhoenix.MixProject do
   def project do
     [
       app: :hello_phoenix,
-      version: "0.1.5",
+      version: "0.1.6",
       elixir: "~> 1.19.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -51,7 +51,8 @@ defmodule HelloPhoenix.MixProject do
       {:bandit, "~> 1.5"},
       {:ecto_sql, "~> 3.13.4"},
       {:ecto_sqlite3, "~> 0.22"},
-      {:exqlite, "~> 0.34"}
+      {:exqlite, "~> 0.34"},
+      {:oban, "~> 2.20"}
     ]
   end
 

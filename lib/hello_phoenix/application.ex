@@ -14,6 +14,7 @@ defmodule HelloPhoenix.Application do
       {DNSCluster, query: Application.get_env(:hello_phoenix, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: HelloPhoenix.PubSub},
       HelloPhoenix.Repo,
+      {Oban, Application.fetch_env!(:hello_phoenix, Oban)},
       HelloPhoenixWeb.Endpoint
     ]
 

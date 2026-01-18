@@ -1,0 +1,10 @@
+services:
+  admin:
+    image: coleifer/sqlite-web:latest
+    container_name: sqlite_admin
+    restart: unless-stopped
+    ports:
+      - "8978:8080"
+    volumes:
+      - ./data:/data
+    entrypoint: sqlite_web /data/sqlite.db --host 0.0.0.0 --port 8080
